@@ -33,7 +33,7 @@ class Articles(object):
                 try:
                     link = item.guid.text
                     print link
-
+                # this except is used by Wallla
                 except AttributeError:
                     link = item.description.text[46:83]
                     print link
@@ -50,14 +50,17 @@ class Webpage(object):
     def __init__(self, main_csv):
         self.main_csv = main_csv
 
-    def write_to_html(self, html_output, data):
+    def write_to_page(self, html_output, data):
 
             with open(self.main_csv, 'r') as data_file:
                 csv_data = csv.DictReader(data_file)
 
                 for line in csv_data:
-                    data.append('{} - <a href="{}">{}</a>'
-                                .format(line['date'], line['link'], line['title']))
+                    if line['date' or 'title' or 'link'] == '':
+                        pass
+                    else:
+                        data.append('{} - <a href="{}">{}</a>'
+                                    .format(line['date'], line['link'], line['title']))
 
             html_output += '<p> <b>{} articles from 3 sites:<br>' \
                            'NewYorkTimes, Ynet, Walla</b></p>'.format(len(data))
@@ -92,7 +95,7 @@ def main():
     data = []
 
     webpage = Webpage('Scraping&Writing.csv')
-    webpage.write_to_html(html_output, data)
+    webpage.write_to_page(html_output, data)
 
 
 if __name__ == '__main__':
