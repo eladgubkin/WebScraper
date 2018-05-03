@@ -56,11 +56,8 @@ class Webpage(object):
                 csv_data = csv.DictReader(data_file)
 
                 for line in csv_data:
-                    if line['date'] == '':
-                        break
-                    else:
-                        data.append('{} - <a href="{}">{}</a>'
-                                    .format(line['date'], line['link'], line['title']))
+                    data.append('{} - <a href="{}">{}</a>'
+                                .format(line['date'], line['link'], line['title']))
 
             html_output += '<p> <b>{} articles from 3 sites:<br>' \
                            'NewYorkTimes, Ynet, Walla</b></p>'.format(len(data))
