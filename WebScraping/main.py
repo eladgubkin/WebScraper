@@ -62,7 +62,8 @@ class Webpage(object):
                         data.append('{} - <a href="{}">{}</a>'
                                     .format(line['date'], line['link'], line['title']))
 
-            html_output += '<p> <b>{} articles from 3 sites:</b></p>'.format(len(data))
+            html_output += '<p> <b>{} articles from 3 sites:<br>' \
+                           'NewYorkTimes, Ynet, Walla</b></p>'.format(len(data))
 
             html_output += '\n<ul>'
 
