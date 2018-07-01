@@ -57,7 +57,6 @@ def articles_to_html(articles):
 
 
 def main():
-    reload(sys)
     sys.setdefaultencoding("UTF-8")
 
     articles = get_articles_from_multiple_urls([
@@ -67,7 +66,7 @@ def main():
     ])
 
     for article in articles:
-        print article
+        print(article)
 
     with open('index.html', 'w') as html_file:
         html_file.write(articles_to_html(articles))
