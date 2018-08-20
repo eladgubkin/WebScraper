@@ -43,22 +43,25 @@ def articles_to_html(articles):
     lis = [article.to_html() for article in articles]
 
     return """<html>
+
     <head>
-        <meta charset="utf-8" />
-        <title>News</title>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Awesome site of news</title>
     </head>
+
     <body>
-        <h1>Awesome site of news</h1>
-        <ul>
-            {}
-        </ul>
+      <h1>Awesome site of news</h1>
+      <ol>
+        {}
+      </ol>
     </body>
+
 </html>""".format('\n            '.join(lis))
 
 
 def main():
-    sys.setdefaultencoding("UTF-8")
-
     articles = get_articles_from_multiple_urls([
         'http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
         'http://www.ynet.co.il/Integration/StoryRss1854.xml',
@@ -68,7 +71,7 @@ def main():
     for article in articles:
         print(article)
 
-    with open('index.html', 'w') as html_file:
+    with open('WebScraper\index.html', 'w') as html_file:
         html_file.write(articles_to_html(articles))
 
 
