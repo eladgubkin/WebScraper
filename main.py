@@ -10,10 +10,10 @@ class Article(object):
         self.link = link
 
     def to_html(self):
-        return '<li>{} - <a href="{}">{}</a></li>'.format(self.date, self.link, self.title)
+        return f'<li>{self.date} - <a href="{self.link}">{self.title}</a></li>'
 
     def __str__(self):
-        return 'Title: {}\nDate: {}\nLink: {}'.format(self.title, self.date, self.link)
+        return f'Title: {self.title}\nDate: {self.date}\nLink: {self.link}'
 
 
 def get_articles(rss_url):
